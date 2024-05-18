@@ -4,3 +4,7 @@
 
 # Terraform local storage
 .terraform/
+
+# Terraform state
+*.tfstate
+*.tfstate.backup
