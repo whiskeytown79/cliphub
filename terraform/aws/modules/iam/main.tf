@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_iam_role" {
-  name = "lambda_dynamodb_access_role"
+  name = "cliphub-lambda-dynamodb-access-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -16,7 +16,7 @@ resource "aws_iam_role" "lambda_iam_role" {
 }
 
 resource "aws_iam_policy" "lambda_dynamodb_policy" {
-  name        = "LambdaDynamoDBPolicy"
+  name        = "CliphubLambdaDynamoDBPolicy"
   description = "IAM policy for accessing DynamoDB from Lambda"
 
   policy = jsonencode({

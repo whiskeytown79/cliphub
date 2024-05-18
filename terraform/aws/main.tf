@@ -6,6 +6,13 @@ terraform {
       version = "~> 3.27"
     }
   }
+  backend "s3" {
+    bucket         = "cliphub-tfstate"
+    key            = "state/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = "cliphub-tfstate-lock"
+  }
 }
 
 provider "aws" {
