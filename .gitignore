@@ -1,3 +1,6 @@
 # Jetbrains IDE stuff
 .idea/
 *.iml
+
+# Terraform local storage
+.terraform/
