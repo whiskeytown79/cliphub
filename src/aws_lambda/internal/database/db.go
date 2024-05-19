@@ -18,7 +18,7 @@ type InsertClipInput struct {
 
 func InsertClip(ctx context.Context, input InsertClipInput) (*model.Clip, error) {
 	clip := model.Clip{
-		Text: input.text,
+		Text: input.Text,
 	}
 
 	item, err := attributevalue.MarshalMap(clip)

@@ -35,6 +35,10 @@ module "dynamodb" {
   source = "./modules/dynamodb"
 }
 
+# TODO: The lambda deployment fails unless the code zip files are already in place.
+# Should we put a placeholder there when initializing the infrastructure?
+# Also we should be able to get the zip file names out of terraform to be used in the build/deploy scripts
+# at some point.
 module "lambda" {
   source              = "./modules/lambda"
   table_name          = module.dynamodb.table_name
