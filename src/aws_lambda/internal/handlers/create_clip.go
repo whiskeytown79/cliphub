@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"context"
 	"encoding/json"
 	"github.com/whiskeytown79/cliphub/internal/database"
 	"net/http"
@@ -21,7 +20,7 @@ func CreateClip(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ctx := context.TODO()
+	ctx := r.Context()
 
 	input := database.InsertClipInput{
 		Text: createClip.Body,

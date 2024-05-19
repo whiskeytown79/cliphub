@@ -24,16 +24,17 @@ func SetupRoutes(ctx context.Context) *mux.Router {
 }
 
 func main() {
-	ctx := context.TODO()
+	ctx := context.Background()
 	router := SetupRoutes(ctx)
 	adapter := gorillamux.New(router)
 	handler := getHandler(adapter)
-	lambda.Start(handler)
+	lambda.StartWithOptions(handler, lambda.WithContext(ctx))
 }
 
 func getHandler(adapter *gorillamux.GorillaMuxAdapter) func(context.Context, events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	return func(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 		r, err := adapter.ProxyWithContext(ctx, *core.NewSwitchableAPIGatewayRequestV1(&req))
+		// TODO: Update to V2
 		return *r.Version1(), err
 	}
 }
