@@ -12,7 +12,7 @@ type CreateClipInput struct {
 	Body        string `json:"body"`
 }
 
-func CreateClip(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+func CreateClip(w http.ResponseWriter, r *http.Request) {
 	var createClip CreateClipInput
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&createClip)
@@ -20,6 +20,8 @@ func CreateClip(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
+	ctx := context.TODO()
 
 	input := database.InsertClipInput{
 		Text: createClip.Body,
