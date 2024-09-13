@@ -33,6 +33,7 @@ module "s3" {
 
 module "dynamodb" {
   source = "./modules/dynamodb"
+  table_name = "TextStorePOC"
 }
 
 # TODO: The lambda deployment fails unless the code zip files are already in place.
